@@ -1,0 +1,64 @@
+/* Put your CSS here */
+html, body {
+    margin: 20px;
+}
+
+.list-container {
+  text-align:center;
+}
+
+.movie-search {
+  width: 80%;
+}
+
+.movie-list {
+  list-style-type: none;
+  padding: 10px 0 0 10px;
+  background: #fff;
+  overflow: hidden;
+  display:inline-block;
+}
+
+.movie-list .movie-row {
+  text-align:center;
+}
+
+.movie-list a {
+  text-decoration: none;
+}
+
+.movie-list .movie-item {
+  display:inline-block;
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  border: 1px solid #dddddd;
+}
+
+.movie-list .movie-item:hover {
+  background-color: #81cdf0;
+  cursor: pointer;
+}
+
+.movie-item .movie-poster {
+  width: 120px;
+  height: 150px;
+  border-radius: 25px;
+}
+
+.movie-item p {
+  font-family: sans-serif;
+  font-size: 11px;
+  text-align: center;
+}
+
+.movie-info, .movie-info .info {
+  overflow: hidden;
+}
+
+.movie-info .poster{
+  width: 120px;
+  height: 150px;
+  float:left;
+  display: block;
+  margin-right: 5px;
+}
