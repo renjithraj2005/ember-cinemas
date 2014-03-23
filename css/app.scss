@@ -1,0 +1,54 @@
+@import 'styles';
+
+$background-color: #232B2B;
+$text-color: #FFFFFF;
+$text-primary-color: #DC3D24;
+$text-secondary-color: #E3AE57;
+$text-tertiary-color: #394140;
+$shadow-color: #000000;
+
+body {
+    background: $background-color;
+    color: $text-color;
+}
+
+.text-lighter {
+    font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, h6, .color-primary {
+    color: $text-primary-color;
+}
+
+.color-normal {
+    color: $text-color;
+}
+
+.color-secondary {
+    color: $text-secondary-color;
+}
+
+.color-tertiary {
+    color: $text-tertiary-color;    
+}
+
+.shadow-bottom {
+    box-shadow: 0 3px 10px 0px $shadow-color;
+    margin-bottom: 10px;
+}
+
+.input-box-shadow {
+    box-shadow: inset 0 0 20px 2px #000;
+}
+
+.header-title {
+    line-height: 42px;
+}
+
+.input {
+    color: $text-color;
+}
+
+.movie-item .movie-poster {
+    width: 100%;
+}

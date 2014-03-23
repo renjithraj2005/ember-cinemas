@@ -4,7 +4,7 @@ App.Util = Ember.Object.extend({
   transformMovieArray: function( arr ) {
     var result = [], temp = [];
       arr.forEach( function ( elem, i ) {
-        if ( i > 0 && i % 3 === 0 ) {
+        if ( i > 0 && i % 2 === 0 ) {
           result.push( temp );
           temp = [];
         }
@@ -43,14 +43,14 @@ var Movies = [{
   id:2,
   title: '47 Ronin',
   certification: '15+',
-  poster: 'assets/images/2.png',
+  poster: 'assets/images/2.jpg',
   description: 'A band of samurai set out to avenge the death and dishonor of their master at the hands of a ruthless shogun.',
   cinemas: Cinemas
 },{
   id:3,
   title: 'Blood Of Redemption',
   certification: '15+',
-  poster: 'assets/images/3.png',
+  poster: 'assets/images/3.jpg',
   description: 'Quinn Forte had it all: power, money, a brother who idolized him, and a woman who loved him.',
   cinemas: Cinemas
 },{
@@ -64,14 +64,14 @@ var Movies = [{
   id:5,
   title: 'Frozen',
   certification: 'G',
-  poster: 'assets/images/5.png',
+  poster: 'assets/images/5.jpg',
   description: 'Fearless optimist Anna teams up with Kristoff in an epic journey, encountering Everest-like conditions, and a hilarious snowman named Olaf in a race to find Anna\'s sister Elsa, whose icy powers have trapped the kingdom in eternal winter.',
   cinemas: Cinemas
 },{
   id:6,
   title: 'Hobbit',
   certification: 'PG13',
-  poster: 'assets/images/6.png',
+  poster: 'assets/images/6.jpg',
   description: 'The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug.',
   cinemas: Cinemas
 }];

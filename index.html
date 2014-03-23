@@ -2,12 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Ember Cinemas</title>
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
+  <!--<link rel="stylesheet" href="css/style.css">-->
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
 </head>
 <body>
-  <script type="text/x-handlebars">
+  <!--<script type="text/x-handlebars">
     {{outlet}}
   </script>
 
@@ -67,6 +70,47 @@
         {{/each}}
       </ul>
     </section>
+  </script>-->
+  
+  <script type="text/x-handlebars">
+    <header class="clear shadow-bottom">
+        <div class="column column-35">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x color-secondary"></i>
+                <i class="fa fa-chevron-left fa-stack-1x color-primary"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x color-secondary"></i>
+                <i class="fa fa-home fa-stack-1x color-primary"></i>
+            </span>
+        </div>
+        <h3 class="column column-65 text-right header-title">
+            E<span class="text-lighter color-secondary">MBER</span> C<span class="text-lighter color-secondary">INEMAS</span>
+        </h3>
+    </header>
+    {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="index">
+    <section class="clear column">
+        <!--<input class="input input-reset input-box-shadow" type="text" placeholder="Search Movies"/>-->
+        {{input id="search-input" placeholder="Enter Movie/Cinema" class="input input-reset input-box-shadow" value=searchText}}
+    </section>
+    <ul>
+        {{#each row in model}}
+            <div class="clear column">
+                {{#each movie in row}}
+                    {{#link-to 'movie' movie}}
+                        <li class="column column-50 movie-item">
+                            <img class="movie-poster" {{bind-attr src=movie.poster}} alt="Logo">
+                            <p class="color-normal text-center">{{movie.title}}</p>
+                            <p class="color-secondary text-center">{{movie.certification}}</p>
+                        </li>
+                    {{/link-to}}
+                {{/each}}
+            </div>
+        {{/each}}
+    </ul>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
