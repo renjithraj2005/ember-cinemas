@@ -85,6 +85,14 @@ App.Router.map(function() {
   });
 });
 
+App.ExtTextField = Em.TextField.extend({
+    keyUp: function(){
+      console.info('up');
+      //debugger;
+      this.sendAction('targetAction', this.get('value'));   
+    }
+});
+
 App.ApplicationRoute = Ember.Route.extend({
   model: function() {
     console.info('ApplicationRoute');
@@ -102,6 +110,7 @@ App.IndexRoute = Ember.Route.extend({
     controller.set('model', App.Util.transformMovieArray(model));
   }
 });
+
 
 App.MovieRoute = Ember.Route.extend({
   model: function(params) {
@@ -127,12 +136,22 @@ App.BookTimingsRoute = Ember.Route.extend({
 
 App.IndexController = Ember.ArrayController.extend({
   searchText: '',
-  actions: {
+  //actions: {
+  //  searchMovie: function(value) {console.info('search');
+  //    var result = this.get('data').filter(function(movie){
+  //      return movie.title.search(new RegExp(value,'i')) >= 0;
+  //      //return movie.title.search(new RegExp(this.get('searchText'),'i')) >= 0;
+  //    }.bind(this));
+  //    this.set('model', App.Util.transformMovieArray(result));
+  //  },
+  //  testAction: function(value){
+  //       alert(value);   
+  //      }
+  //},
     searchMovie: function() {
       var result = this.get('data').filter(function(movie){
         return movie.title.search(new RegExp(this.get('searchText'),'i')) >= 0;
       }.bind(this));
       this.set('model', App.Util.transformMovieArray(result));
-    }
-  }
+    }.observes('searchText')
 });
