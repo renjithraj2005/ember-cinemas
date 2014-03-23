@@ -97,6 +97,11 @@ App.ApplicationRoute = Ember.Route.extend({
   model: function() {
     console.info('ApplicationRoute');
     return Movies;
+  },
+  actions: {
+    goBack: function() {
+      history.back();
+    }
   }
 });
 
@@ -108,6 +113,12 @@ App.IndexRoute = Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('data', model);
     controller.set('model', App.Util.transformMovieArray(model));
+  },
+  activate: function() {
+    this.controllerFor('application').set('isHidden', true);
+  },
+  deactivate: function() {
+    this.controllerFor('application').set('isHidden', false);
   }
 });
 

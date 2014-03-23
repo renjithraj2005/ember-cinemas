@@ -75,14 +75,18 @@
   <script type="text/x-handlebars">
     <header class="clear shadow-bottom">
         <div class="column column-35">
+            <button {{action "goBack"}} {{bind-attr class=":button-reset isHidden"}}>
             <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x color-secondary"></i>
                 <i class="fa fa-chevron-left fa-stack-1x color-primary"></i>
             </span>
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x color-secondary"></i>
-                <i class="fa fa-home fa-stack-1x color-primary"></i>
-            </span>
+            </button>
+            {{#link-to 'index'}} 
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x color-secondary"></i>
+                  <i class="fa fa-home fa-stack-1x color-primary"></i>
+              </span>
+            {{/link-to}}
         </div>
         <h3 class="column column-65 text-right header-title">
             E<span class="text-lighter color-secondary">MBER</span> C<span class="text-lighter color-secondary">INEMAS</span>

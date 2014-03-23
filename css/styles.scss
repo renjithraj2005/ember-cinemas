@@ -31,16 +31,20 @@ $h6-size:           14px!default;
     width: 35%;
 }
 
+.button-reset, .input-reset {
+    background: none;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
 .input {
     width: 100%;
     box-sizing: border-box;
 }
 
 .input-reset {
-    border: none;
     padding: 15px;
-    outline: none;
-    background: transparent;
 }
 
 .icon-pos-left {
@@ -94,3 +98,6 @@ ul {
     margin: 0;
 }
 
+.is-hidden {
+    display:none;
+}
