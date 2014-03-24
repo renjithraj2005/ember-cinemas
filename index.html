@@ -133,7 +133,7 @@
             {{#link-to 'cinemas' class="button button-block"}}CINEMAS{{/link-to}}
           </div>
           <div class="column column-50 padding-break-right">
-            {{#link-to 'cinemas' class="button button-block"}}TRAILER{{/link-to}}
+            {{#link-to 'dummy' class="button button-block"}}TRAILER{{/link-to}}
           </div>
         </div>
       </div>
@@ -142,24 +142,26 @@
   </script>
   
   <script type="text/x-handlebars" data-template-name="cinemas">
-    <section class="column border">
-      <ul>
+    <section class="column">
+      <ul class="column border">
         {{#each cinema in model}}
-        <li>{{#link-to 'cinemas.timings' cinema class="button button-block"}}{{cinema.name}}{{/link-to}}</li>
+        <li>{{#link-to 'timings' cinema class="button button-block"}}{{cinema.name}}{{/link-to}}</li>
         {{/each}}
       </ul>
     </section>
     {{outlet}}
   </script>
   
-  <script type="text/x-handlebars" data-template-name="cinemas/timings">
-    <section class="column border">
-      <ul>
+  <script type="text/x-handlebars" data-template-name="timings">
+    {{#view App.TimingsSelectionView}}
+    <section class="column">
+      <ul class="column border timing">
         {{#each timing in model.timings}}
-        <li>{{#link-to 'cinemas.timings' class="button button-block"}}{{timing}}{{/link-to}}</li>
+        <li><button class="button button-block"}}>{{timing}}</button></li>
         {{/each}}
       </ul>
     </section>
+    {{/view}}
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>

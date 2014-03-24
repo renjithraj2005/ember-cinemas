@@ -1,7 +1,7 @@
 .clear {
   overflow: hidden; }
 
-.column {
+.column, .timing li {
   box-sizing: border-box;
   padding: 5px; }
 
@@ -140,12 +140,18 @@ p {
   box-shadow: 0 0 4px 4px #000000; }
 
 .button {
-  background: #e3ae57;
   color: #dc3d24;
   font-weight: bold;
   padding: 10px;
   text-decoration: none;
-  text-align: center; }
+  text-align: center;
+  border: 2px solid #000; }
 
-.button:active {
-  background: #394140; }
+.button.active {
+  background: #e3ae57;
+  box-shadow: inset 0 0 10px 1px #000; }
+
+.timing {
+  text-align: justify; }
+  .timing li {
+    display: inline-block; }
