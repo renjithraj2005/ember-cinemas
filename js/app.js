@@ -77,9 +77,8 @@ var Movies = [{
 }];
 
 App.Router.map(function() {
-  //this.route("movie", { path: "/movie/:movie_id" });
-  this.resource('movie', {path: "/movie/:movie_id"}, function() {
-    this.resource('book', function() {
+  this.resource('movie', {path: "/:movie_id"}, function() {
+    this.resource('cinemas', function() {
       this.route('timings', { path: ':cinema_id'});  
     });
   });
@@ -87,8 +86,6 @@ App.Router.map(function() {
 
 App.ExtTextField = Em.TextField.extend({
     keyUp: function(){
-      console.info('up');
-      //debugger;
       this.sendAction('targetAction', this.get('value'));   
     }
 });
@@ -126,22 +123,21 @@ App.IndexRoute = Ember.Route.extend({
 App.MovieRoute = Ember.Route.extend({
   model: function(params) {
     console.info('MovieRoute');
-    //debugger;
     return this.modelFor('application')[arguments[0].movie_id - 1];
   }
 });
 
-App.BookRoute = Ember.Route.extend({
+App.CinemasRoute = Ember.Route.extend({
   model: function(params) {
-    console.info('BookRoute');
+    console.info('CinemasRoute');
     return this.modelFor('movie').cinemas;
   }
 });
 
-App.BookTimingsRoute = Ember.Route.extend({
+App.CinemasTimingsRoute = Ember.Route.extend({
   model: function(params) {
-    console.info('TimingsRoute');
-    return this.modelFor('book')[params.cinema_id]
+    console.info('CinemasTimingsRoute');
+    return this.modelFor('cinemas')[params.cinema_id].timings;
   }
 });
 

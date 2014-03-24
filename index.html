@@ -130,16 +130,35 @@
         </div>
         <div class="clear">
           <div class="column column-50 padding-break-left">
-            {{#link-to 'book' class="button button-block"}}CINEMAS{{/link-to}}
+            {{#link-to 'cinemas' class="button button-block"}}CINEMAS{{/link-to}}
           </div>
           <div class="column column-50 padding-break-right">
-            {{#link-to 'book' class="button button-block"}}TRAILER{{/link-to}}
+            {{#link-to 'cinemas' class="button button-block"}}TRAILER{{/link-to}}
           </div>
         </div>
       </div>
     </section>
-    <section class="column">
-      
+    {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="cinemas">
+    <section class="column border">
+      <ul>
+        {{#each cinema in model}}
+        <li>{{#link-to 'cinemas.timings' cinema class="button button-block"}}{{cinema.name}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+    </section>
+    {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="cinemas/timings">
+    <section class="column border">
+      <ul>
+        {{#each timing in model}}
+        <li>{{#link-to 'cinemas.timings' class="button button-block"}}{{timing}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
     </section>
   </script>
 
