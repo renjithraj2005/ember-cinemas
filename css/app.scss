@@ -90,7 +90,6 @@ p {
 .timing {
     text-align: justify;
     li {
-        @extend .column;
         display: inline-block;
     }
 }

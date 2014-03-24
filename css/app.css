@@ -1,7 +1,7 @@
 .clear {
   overflow: hidden; }
 
-.column, .timing li {
+.column {
   box-sizing: border-box;
   padding: 5px; }
 
