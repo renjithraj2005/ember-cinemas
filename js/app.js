@@ -137,7 +137,7 @@ App.CinemasRoute = Ember.Route.extend({
 App.CinemasTimingsRoute = Ember.Route.extend({
   model: function(params) {
     console.info('CinemasTimingsRoute');
-    return this.modelFor('cinemas')[params.cinema_id].timings;
+    return this.modelFor('cinemas')[params.cinema_id];
   }
 });
 

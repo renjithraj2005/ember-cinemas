@@ -155,7 +155,7 @@
   <script type="text/x-handlebars" data-template-name="cinemas/timings">
     <section class="column border">
       <ul>
-        {{#each timing in model}}
+        {{#each timing in model.timings}}
         <li>{{#link-to 'cinemas.timings' class="button button-block"}}{{timing}}{{/link-to}}</li>
         {{/each}}
       </ul>
