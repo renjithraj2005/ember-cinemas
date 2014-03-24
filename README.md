@@ -1,4 +1,4 @@
-ember-gi
-========
+ember-cinemas
+=============
 
 WIP
