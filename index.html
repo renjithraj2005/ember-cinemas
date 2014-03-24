@@ -109,13 +109,38 @@
                         <li class="column column-50 movie-item">
                             <img class="movie-poster" {{bind-attr src=movie.poster}} alt="Logo">
                             <p class="color-normal text-center">{{movie.title}}</p>
-                            <p class="color-secondary text-center">{{movie.certification}}</p>
+                            <p class="text-small color-secondary text-center">{{movie.certification}}</p>
                         </li>
                     {{/link-to}}
                 {{/each}}
             </div>
         {{/each}}
     </ul>
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="movie">
+    <section class="column">
+      <div class="movie-info column border">
+        <div class="media">
+          <img class="image" {{bind-attr src=poster}} alt="Logo">
+          <div class="body">
+            <h5>{{title}}</h5>
+            <p class="text-small">{{description}}</p>
+          </div>
+        </div>
+        <div class="clear">
+          <div class="column column-50 padding-break-left">
+            {{#link-to 'book' class="button button-block"}}CINEMAS{{/link-to}}
+          </div>
+          <div class="column column-50 padding-break-right">
+            {{#link-to 'book' class="button button-block"}}TRAILER{{/link-to}}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="column">
+      
+    </section>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>

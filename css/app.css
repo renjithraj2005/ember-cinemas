@@ -17,15 +17,17 @@
 .column-35 {
   width: 35%; }
 
-.button-reset, .input-reset {
+.button-reset, .input-reset, .button {
   background: none;
   padding: 0;
   border: none;
   outline: none; }
 
-.input {
+.input, .button-block {
   width: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none; }
 
 .input-reset {
   padding: 15px; }
@@ -72,6 +74,23 @@ ul {
 .is-hidden {
   display: none; }
 
+.media {
+  overflow: hidden; }
+  .media .image {
+    float: left;
+    margin-right: 10px;
+    display: block; }
+  .media .body {
+    overflow: hidden;
+    _overflow: visible;
+    zoom: 1; }
+
+.padding-break-right {
+  padding-right: 0; }
+
+.padding-break-left {
+  padding-left: 0; }
+
 body {
   background: #232b2b;
   color: white; }
@@ -106,3 +125,27 @@ h1, h2, h3, h4, h5, h6, .color-primary {
 
 .movie-item .movie-poster {
   width: 100%; }
+
+.movie-info .image {
+  width: 100px; }
+
+p {
+  font-size: 16px; }
+
+.text-small {
+  font-size: 12px; }
+
+.border {
+  border: 2px solid #394140;
+  box-shadow: 0 0 4px 4px #000000; }
+
+.button {
+  background: #e3ae57;
+  color: #dc3d24;
+  font-weight: bold;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center; }
+
+.button:active {
+  background: #394140; }

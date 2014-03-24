@@ -52,3 +52,35 @@ h1, h2, h3, h4, h5, h6, .color-primary {
 .movie-item .movie-poster {
     width: 100%;
 }
+
+.movie-info {
+    .image {
+        width: 100px;
+    }
+}
+
+p {
+    font-size: 16px;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+.border {
+    border: 2px solid $text-tertiary-color;
+    box-shadow: 0 0 4px 4px #000000;
+}
+
+.button {
+    background: $text-secondary-color;
+    color: $text-primary-color;
+    font-weight: bold;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:active {
+    background: $text-tertiary-color;
+}

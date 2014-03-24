@@ -31,16 +31,18 @@ $h6-size:           14px!default;
     width: 35%;
 }
 
-.button-reset, .input-reset {
+.button-reset, .input-reset, .button {
     background: none;
     padding: 0;
     border: none;
     outline: none;
 }
 
-.input {
+.input, .button-block {
     width: 100%;
     box-sizing: border-box;
+    display: block;
+    text-decoration: none;
 }
 
 .input-reset {
@@ -100,4 +102,27 @@ ul {
 
 .is-hidden {
     display:none;
+}
+
+.media {
+    overflow: hidden;
+    
+    .image {
+        float:left; margin-right: 10px;
+        display: block;
+    }
+    
+    .body {
+        overflow:hidden;
+        _overflow:visible;
+        zoom:1;
+    }
+}
+
+.padding-break-right {
+    padding-right: 0;
+}
+
+.padding-break-left {
+    padding-left: 0;
 }
