@@ -49,8 +49,12 @@ h1, h2, h3, h4, h5, h6, .color-primary {
     color: $text-color;
 }
 
-.movie-item .movie-poster {
-    width: 100%;
+.movie-item {
+    display: inline-block;
+    
+    .movie-poster {
+        width: 100%;
+    }
 }
 
 .movie-info {
@@ -91,5 +95,6 @@ p {
     text-align: justify;
     li {
         display: inline-block;
+        padding-bottom: 5px;
     }
 }

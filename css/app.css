@@ -17,6 +17,12 @@
 .column-35 {
   width: 35%; }
 
+.column-25 {
+  width: 32%; }
+
+.column-12 {
+  width: 19%; }
+
 .button-reset, .input-reset, .button {
   background: none;
   padding: 0;
@@ -123,8 +129,10 @@ h1, h2, h3, h4, h5, h6, .color-primary {
 .input {
   color: white; }
 
-.movie-item .movie-poster {
-  width: 100%; }
+.movie-item {
+  display: inline-block; }
+  .movie-item .movie-poster {
+    width: 100%; }
 
 .movie-info .image {
   width: 100px; }
@@ -154,4 +162,5 @@ p {
 .timing {
   text-align: justify; }
   .timing li {
-    display: inline-block; }
+    display: inline-block;
+    padding-bottom: 5px; }

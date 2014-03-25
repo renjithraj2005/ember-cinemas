@@ -1,10 +1,35 @@
-App = Ember.Application.create();
+App = Ember.Application.create({
+  ready: function() {
+    //enquire.register(" screen and (min-width : 320px) and (max-width : 568px)", function() {
+    //  //For Phone
+    //}).register("screen and (min-width : 568px) and (max-width : 1024px)", function() { 
+    //  //For Tablet
+    //}).register(" screen and (min-width : 1025px)", function() {
+    //  //For Desktop
+    //});
+  }
+});
+
+Ember.Handlebars.registerBoundHelper('intoGridArray', function(array, columns) {
+  var result = [], temp = [];
+    array.forEach( function ( elem, i ) {
+      if ( i > 0 && i % columns === 0 ) {
+        result.push( temp );
+        temp = [];
+      }
+    temp.push( elem );
+  });
+  if ( temp.length > 0 ) {
+    result.push( temp );
+  }
+  return result;
+});
 
 App.Util = Ember.Object.extend({
-  transformMovieArray: function( arr ) {
+  transformMovieArray: function( arr, col ) {
     var result = [], temp = [];
       arr.forEach( function ( elem, i ) {
-        if ( i > 0 && i % 2 === 0 ) {
+        if ( i > 0 && i % col === 0 ) {
           result.push( temp );
           temp = [];
         }
@@ -77,14 +102,12 @@ var Movies = [{
 }];
 
 App.Router.map(function() {
-  this.resource('movie', {path: "/:movie_id"}, function() {
+  this.resource('movie', {path: "/movie/:movie_id"}, function() {
     this.resource('cinemas', function() {
-      this.resource('timings', { path: ':cinema_id'}, function() {
-        //this.route('book', { path: 'book'});
-      });
+      this.resource('timings', {path: '/:cinema_id/timings'});
     });
   });
-  this.route('dummy');
+  this.route('trailer', {path: '/movie/:movie_id/trailer'});
 });
 
 App.ExtTextField = Em.TextField.extend({
@@ -110,12 +133,23 @@ App.IndexRoute = Ember.Route.extend({
     console.info('IndexRoute');
     return this.modelFor('application');
   },
-  setupController: function(controller, model) {
-    controller.set('data', model);
-    controller.set('model', App.Util.transformMovieArray(model));
-  },
   activate: function() {
     this.controllerFor('application').set('isHidden', true);
+    
+    var controller = this.controllerFor('index');
+    enquire.register(" screen and (min-width : 320px) and (max-width : 568px)", function() {
+      //For Phone
+      console.info(2);
+      controller.set('columns',2);
+    }.bind(this)).register("screen and (min-width : 568px) and (max-width : 1024px)", function() { 
+      //For Tablet
+      console.info(4);
+      controller.set('columns',3);
+    }).register(" screen and (min-width : 1025px)", function() {
+      //For Desktop
+      console.info(8);
+      controller.set('columns',6);
+    });
   },
   deactivate: function() {
     this.controllerFor('application').set('isHidden', false);
@@ -167,10 +201,22 @@ App.IndexController = Ember.ArrayController.extend({
   //       alert(value);   
   //      }
   //},
-    searchMovie: function() {
-      var result = this.get('data').filter(function(movie){
-        return movie.title.search(new RegExp(this.get('searchText'),'i')) >= 0;
-      }.bind(this));
-      this.set('model', App.Util.transformMovieArray(result));
-    }.observes('searchText')
+  columnWeight: function() {
+    if(this.get('columns') === 6) {
+      return 'column-12';
+    } else  if(this.get('columns') === 3) {
+      return 'column-25';
+    } else {
+      return 'column-50';
+    }
+  }.property('columns'),
+  displayModel: function() {
+    return App.Util.transformMovieArray(this.get('model'), this.get('columns'));
+  }.property('model', 'columns'),
+  searchMovie: function() {
+    var result = this.get('model').filter(function(movie){
+      return movie.title.search(new RegExp(this.get('searchText'),'i')) >= 0;
+    }.bind(this));
+    this.set('displayModel', App.Util.transformMovieArray(result));
+  }.observes('searchText')
 });

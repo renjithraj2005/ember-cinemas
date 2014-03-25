@@ -6,6 +6,7 @@ $h4-size:           20px!default; // .delta
 $h5-size:           16px!default; // .epsilon
 $h6-size:           14px!default;
 
+
 .clear {
     overflow: hidden;
 }
@@ -29,6 +30,14 @@ $h6-size:           14px!default;
 
 .column-35 {
     width: 35%;
+}
+
+.column-25 {
+    width: 32%;
+}
+
+.column-12 {
+    width: 19%;
 }
 
 .button-reset, .input-reset, .button {
