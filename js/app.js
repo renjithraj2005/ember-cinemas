@@ -1,29 +1,4 @@
-App = Ember.Application.create({
-  ready: function() {
-    //enquire.register(" screen and (min-width : 320px) and (max-width : 568px)", function() {
-    //  //For Phone
-    //}).register("screen and (min-width : 568px) and (max-width : 1024px)", function() { 
-    //  //For Tablet
-    //}).register(" screen and (min-width : 1025px)", function() {
-    //  //For Desktop
-    //});
-  }
-});
-
-Ember.Handlebars.registerBoundHelper('intoGridArray', function(array, columns) {
-  var result = [], temp = [];
-    array.forEach( function ( elem, i ) {
-      if ( i > 0 && i % columns === 0 ) {
-        result.push( temp );
-        temp = [];
-      }
-    temp.push( elem );
-  });
-  if ( temp.length > 0 ) {
-    result.push( temp );
-  }
-  return result;
-});
+App = Ember.Application.create();
 
 App.Util = Ember.Object.extend({
   transformMovieArray: function( arr, col ) {
@@ -110,15 +85,8 @@ App.Router.map(function() {
   this.route('trailer', {path: '/movie/:movie_id/trailer'});
 });
 
-App.ExtTextField = Em.TextField.extend({
-    keyUp: function(){
-      this.sendAction('targetAction', this.get('value'));   
-    }
-});
-
 App.ApplicationRoute = Ember.Route.extend({
   model: function() {
-    console.info('ApplicationRoute');
     return Movies;
   },
   actions: {
@@ -130,7 +98,6 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    console.info('IndexRoute');
     return this.modelFor('application');
   },
   activate: function() {
@@ -139,15 +106,12 @@ App.IndexRoute = Ember.Route.extend({
     var controller = this.controllerFor('index');
     enquire.register(" screen and (min-width : 320px) and (max-width : 568px)", function() {
       //For Phone
-      console.info(2);
       controller.set('columns',2);
     }.bind(this)).register("screen and (min-width : 568px) and (max-width : 1024px)", function() { 
       //For Tablet
-      console.info(4);
       controller.set('columns',3);
     }).register(" screen and (min-width : 1025px)", function() {
       //For Desktop
-      console.info(8);
       controller.set('columns',6);
     });
   },
@@ -159,21 +123,18 @@ App.IndexRoute = Ember.Route.extend({
 
 App.MovieRoute = Ember.Route.extend({
   model: function(params) {
-    console.info('MovieRoute');
     return this.modelFor('application')[arguments[0].movie_id - 1];
   }
 });
 
 App.CinemasRoute = Ember.Route.extend({
   model: function(params) {
-    console.info('CinemasRoute');
     return this.modelFor('movie').cinemas;
   }
 });
 
 App.TimingsRoute = Ember.Route.extend({
   model: function(params) {
-    console.info('TimingsRoute');
     return this.modelFor('cinemas')[params.cinema_id];
   }
 });
@@ -189,18 +150,6 @@ App.TimingsSelectionView = Ember.View.extend({
 
 App.IndexController = Ember.ArrayController.extend({
   searchText: '',
-  //actions: {
-  //  searchMovie: function(value) {console.info('search');
-  //    var result = this.get('data').filter(function(movie){
-  //      return movie.title.search(new RegExp(value,'i')) >= 0;
-  //      //return movie.title.search(new RegExp(this.get('searchText'),'i')) >= 0;
-  //    }.bind(this));
-  //    this.set('model', App.Util.transformMovieArray(result));
-  //  },
-  //  testAction: function(value){
-  //       alert(value);   
-  //      }
-  //},
   columnWeight: function() {
     if(this.get('columns') === 6) {
       return 'column-12';

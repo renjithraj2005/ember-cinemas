@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <title>Ember Cinemas</title>
   <link rel="stylesheet" href="css/normalize.css">
-  <!--<link rel="stylesheet" href="css/style.css">-->
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
 </head>
@@ -35,9 +34,7 @@
   
   <script type="text/x-handlebars" data-template-name="index">
     <section class="clear column">
-        <!--<input class="input input-reset input-box-shadow" type="text" placeholder="Search Movies"/>-->
-        {{input id="search-input" placeholder="Enter Movie/Cinema" class="input input-reset input-box-shadow" value=searchText}}
-        <!--{{view App.ExtTextField targetAction="searchMovie"}}-->
+      {{input id="search-input" placeholder="Enter Movie/Cinema" class="input input-reset input-box-shadow" value=searchText}}
     </section>
     <ul>{{log displayModel}}
         {{#each row in displayModel}}
